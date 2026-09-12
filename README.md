@@ -10,12 +10,12 @@ IronLatch is a cloud-native DevSecOps portfolio project that demonstrates secure
 
 ```mermaid
 flowchart TD
-    U[Client] --> S[Kubernetes Service]
-    S --> A[IronLatch FastAPI Pod]
-    A --> M[/metrics]
-    M --> P[Prometheus]
-    P --> G[Grafana Dashboard]
-    P --> AM[Alertmanager]
+    U["Client"] --> S["Kubernetes Service"]
+    S --> A["IronLatch FastAPI Pod"]
+    A --> M["/metrics"]
+    M --> P["Prometheus"]
+    P --> G["Grafana Dashboard"]
+    P --> AM["Alertmanager"]
 ```
 
 ## Features
