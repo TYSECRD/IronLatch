@@ -1,0 +1,675 @@
+﻿{
+    "annotations":  {
+                        "list":  [
+                                     {
+                                         "builtIn":  1,
+                                         "datasource":  {
+                                                            "type":  "grafana",
+                                                            "uid":  "-- Grafana --"
+                                                        },
+                                         "enable":  true,
+                                         "hide":  true,
+                                         "iconColor":  "rgba(0, 211, 255, 1)",
+                                         "name":  "Annotations \u0026 Alerts",
+                                         "type":  "dashboard"
+                                     }
+                                 ]
+                    },
+    "editable":  true,
+    "fiscalYearStartMonth":  0,
+    "graphTooltip":  0,
+    "id": null,
+    "liveNow":  false,
+    "panels":  [
+                   {
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "prometheus"
+                                      },
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "color":  {
+                                                                          "fixedColor":  "#ad46ff",
+                                                                          "mode":  "thresholds"
+                                                                      },
+                                                            "thresholds":  {
+                                                                               "mode":  "absolute",
+                                                                               "steps":  [
+                                                                                             {
+                                                                                                 "color":  "green",
+                                                                                                 "value":  0
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "red",
+                                                                                                 "value":  80
+                                                                                             }
+                                                                                         ]
+                                                                           }
+                                                        }
+                                       },
+                       "gridPos":  {
+                                       "h":  6,
+                                       "w":  24,
+                                       "x":  0,
+                                       "y":  0
+                                   },
+                       "id":  1,
+                       "options":  {
+                                       "colorMode":  "value",
+                                       "graphMode":  "area",
+                                       "justifyMode":  "auto",
+                                       "orientation":  "auto",
+                                       "percentChangeColorMode":  "standard",
+                                       "reduceOptions":  {
+                                                             "calcs":  [
+                                                                           "lastNotNull"
+                                                                       ],
+                                                             "fields":  "",
+                                                             "values":  false
+                                                         },
+                                       "showPercentChange":  false,
+                                       "textMode":  "auto",
+                                       "wideLayout":  true
+                                   },
+                       "pluginVersion":  "13.2.1",
+                       "targets":  [
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "sum(http_requests_total)",
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "A"
+                                       },
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "sum by (handler) (rate(http_requests_total[1m]))",
+                                           "instant":  false,
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "B"
+                                       }
+                                   ],
+                       "title":  "IronLatch Total API Requests",
+                       "transparent":  true,
+                       "type":  "stat"
+                   },
+                   {
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "prometheus"
+                                      },
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "color":  {
+                                                                          "mode":  "palette-classic"
+                                                                      },
+                                                            "custom":  {
+                                                                           "axisBorderShow":  false,
+                                                                           "axisCenteredZero":  false,
+                                                                           "axisColorMode":  "text",
+                                                                           "axisLabel":  "",
+                                                                           "axisPlacement":  "auto",
+                                                                           "barAlignment":  0,
+                                                                           "barWidthFactor":  0.6,
+                                                                           "drawStyle":  "bars",
+                                                                           "fillOpacity":  100,
+                                                                           "gradientMode":  "hue",
+                                                                           "hideFrom":  {
+                                                                                            "legend":  false,
+                                                                                            "tooltip":  false,
+                                                                                            "viz":  false
+                                                                                        },
+                                                                           "insertNulls":  false,
+                                                                           "lineInterpolation":  "linear",
+                                                                           "lineWidth":  1,
+                                                                           "pointSize":  5,
+                                                                           "scaleDistribution":  {
+                                                                                                     "type":  "linear"
+                                                                                                 },
+                                                                           "showPoints":  "auto",
+                                                                           "showValues":  false,
+                                                                           "spanNulls":  false,
+                                                                           "stacking":  {
+                                                                                            "group":  "A",
+                                                                                            "mode":  "normal"
+                                                                                        },
+                                                                           "thresholdsStyle":  {
+                                                                                                   "mode":  "off"
+                                                                                               }
+                                                                       },
+                                                            "thresholds":  {
+                                                                               "mode":  "absolute",
+                                                                               "steps":  [
+                                                                                             {
+                                                                                                 "color":  "green",
+                                                                                                 "value":  0
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "red",
+                                                                                                 "value":  80
+                                                                                             }
+                                                                                         ]
+                                                                           },
+                                                            "unit":  "reqps"
+                                                        }
+                                       },
+                       "gridPos":  {
+                                       "h":  8,
+                                       "w":  24,
+                                       "x":  0,
+                                       "y":  6
+                                   },
+                       "id":  2,
+                       "options":  {
+                                       "legend":  {
+                                                      "calcs":  [
+
+                                                                ],
+                                                      "displayMode":  "list",
+                                                      "placement":  "bottom",
+                                                      "showLegend":  true
+                                                  },
+                                       "tooltip":  {
+                                                       "hideZeros":  false,
+                                                       "mode":  "single",
+                                                       "sort":  "none"
+                                                   }
+                                   },
+                       "pluginVersion":  "13.2.1",
+                       "targets":  [
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "sum by (handler) (irate(http_requests_total[1m]))",
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "title":  "IronLatch Request Rate",
+                       "transparent":  true,
+                       "type":  "timeseries"
+                   },
+                   {
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "prometheus"
+                                      },
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "color":  {
+                                                                          "fixedColor":  "#ad46ff",
+                                                                          "mode":  "thresholds"
+                                                                      },
+                                                            "thresholds":  {
+                                                                               "mode":  "absolute",
+                                                                               "steps":  [
+                                                                                             {
+                                                                                                 "color":  "green",
+                                                                                                 "value":  0
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "#EAB839",
+                                                                                                 "value":  1
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "red",
+                                                                                                 "value":  5
+                                                                                             }
+                                                                                         ]
+                                                                           }
+                                                        }
+                                       },
+                       "gridPos":  {
+                                       "h":  4,
+                                       "w":  24,
+                                       "x":  0,
+                                       "y":  14
+                                   },
+                       "id":  3,
+                       "options":  {
+                                       "colorMode":  "value",
+                                       "graphMode":  "area",
+                                       "justifyMode":  "auto",
+                                       "orientation":  "auto",
+                                       "percentChangeColorMode":  "standard",
+                                       "reduceOptions":  {
+                                                             "calcs":  [
+                                                                           "lastNotNull"
+                                                                       ],
+                                                             "fields":  "",
+                                                             "values":  false
+                                                         },
+                                       "showPercentChange":  false,
+                                       "textMode":  "auto",
+                                       "wideLayout":  true
+                                   },
+                       "pluginVersion":  "13.2.1",
+                       "targets":  [
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "100 * sum(rate(http_requests_total{status=~\"4xx|5xx\"}[5m])) / sum(rate(http_requests_total[5m]))",
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "title":  "IronLatch Error Rate",
+                       "transparent":  true,
+                       "type":  "stat"
+                   },
+                   {
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "prometheus"
+                                      },
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "color":  {
+                                                                          "fixedColor":  "#ad46ff",
+                                                                          "mode":  "thresholds"
+                                                                      },
+                                                            "thresholds":  {
+                                                                               "mode":  "absolute",
+                                                                               "steps":  [
+                                                                                             {
+                                                                                                 "color":  "green",
+                                                                                                 "value":  0
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "red",
+                                                                                                 "value":  80
+                                                                                             }
+                                                                                         ]
+                                                                           },
+                                                            "unit":  "s"
+                                                        }
+                                       },
+                       "gridPos":  {
+                                       "h":  7,
+                                       "w":  24,
+                                       "x":  0,
+                                       "y":  18
+                                   },
+                       "id":  4,
+                       "options":  {
+                                       "colorMode":  "value",
+                                       "graphMode":  "area",
+                                       "justifyMode":  "auto",
+                                       "orientation":  "horizontal",
+                                       "percentChangeColorMode":  "standard",
+                                       "reduceOptions":  {
+                                                             "calcs":  [
+                                                                           "lastNotNull"
+                                                                       ],
+                                                             "fields":  "",
+                                                             "values":  false
+                                                         },
+                                       "showPercentChange":  false,
+                                       "textMode":  "auto",
+                                       "wideLayout":  true
+                                   },
+                       "pluginVersion":  "13.2.1",
+                       "targets":  [
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "histogram_quantile(\r\n  0.95,\r\n  sum by (le, handler) (\r\n    rate(http_request_duration_seconds_bucket[5m])\r\n  )\r\n)",
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "title":  "IronLatch P95 Response Latency",
+                       "transparent":  true,
+                       "type":  "stat"
+                   },
+                   {
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "prometheus"
+                                      },
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "color":  {
+                                                                          "mode":  "thresholds"
+                                                                      },
+                                                            "thresholds":  {
+                                                                               "mode":  "absolute",
+                                                                               "steps":  [
+                                                                                             {
+                                                                                                 "color":  "red",
+                                                                                                 "value":  0
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "green",
+                                                                                                 "value":  1
+                                                                                             }
+                                                                                         ]
+                                                                           }
+                                                        }
+                                       },
+                       "gridPos":  {
+                                       "h":  5,
+                                       "w":  24,
+                                       "x":  0,
+                                       "y":  25
+                                   },
+                       "id":  5,
+                       "options":  {
+                                       "colorMode":  "value",
+                                       "graphMode":  "area",
+                                       "justifyMode":  "auto",
+                                       "orientation":  "auto",
+                                       "percentChangeColorMode":  "standard",
+                                       "reduceOptions":  {
+                                                             "calcs":  [
+                                                                           "lastNotNull"
+                                                                       ],
+                                                             "fields":  "",
+                                                             "values":  false
+                                                         },
+                                       "showPercentChange":  false,
+                                       "textMode":  "auto",
+                                       "wideLayout":  true
+                                   },
+                       "pluginVersion":  "13.2.1",
+                       "targets":  [
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "kube_deployment_status_replicas_available{\r\n  namespace=\"default\",\r\n  deployment=\"ironlatch\"\r\n}",
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "title":  "IronLatch Available Replicas",
+                       "transparent":  true,
+                       "type":  "stat"
+                   },
+                   {
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "prometheus"
+                                      },
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "color":  {
+                                                                          "mode":  "continuous-GrYlRd",
+                                                                          "seriesBy":  "last"
+                                                                      },
+                                                            "thresholds":  {
+                                                                               "mode":  "percentage",
+                                                                               "steps":  [
+                                                                                             {
+                                                                                                 "color":  "green",
+                                                                                                 "value":  0
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "#EAB839",
+                                                                                                 "value":  70
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "red",
+                                                                                                 "value":  90
+                                                                                             }
+                                                                                         ]
+                                                                           },
+                                                            "unit":  "percent"
+                                                        }
+                                       },
+                       "gridPos":  {
+                                       "h":  8,
+                                       "w":  12,
+                                       "x":  0,
+                                       "y":  30
+                                   },
+                       "id":  6,
+                       "options":  {
+                                       "barShape":  "flat",
+                                       "barWidthFactor":  0.5,
+                                       "effects":  {
+                                                       "barGlow":  false,
+                                                       "centerGlow":  true,
+                                                       "gradient":  true
+                                                   },
+                                       "endpointMarker":  "point",
+                                       "minVizHeight":  75,
+                                       "minVizWidth":  75,
+                                       "orientation":  "auto",
+                                       "reduceOptions":  {
+                                                             "calcs":  [
+                                                                           "lastNotNull"
+                                                                       ],
+                                                             "fields":  "",
+                                                             "values":  false
+                                                         },
+                                       "segmentCount":  1,
+                                       "segmentSpacing":  0.3,
+                                       "shape":  "gauge",
+                                       "showThresholdLabels":  false,
+                                       "showThresholdMarkers":  true,
+                                       "sizing":  "auto",
+                                       "sparkline":  true,
+                                       "textMode":  "auto"
+                                   },
+                       "pluginVersion":  "13.2.1",
+                       "targets":  [
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "100 *\r\nsum(\r\n  rate(\r\n    container_cpu_usage_seconds_total{\r\n      namespace=\"default\",\r\n      pod=~\"ironlatch-.*\",\r\n      container=\"ironlatch\"\r\n    }[5m]\r\n  )\r\n)\r\n/\r\nsum(\r\n  kube_pod_container_resource_limits{\r\n    namespace=\"default\",\r\n    pod=~\"ironlatch-.*\",\r\n    container=\"ironlatch\",\r\n    resource=\"cpu\",\r\n    unit=\"core\"\r\n  }\r\n)",
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "title":  "IronLatch CPU Usage",
+                       "transparent":  true,
+                       "type":  "gauge"
+                   },
+                   {
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "prometheus"
+                                      },
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "color":  {
+                                                                          "mode":  "continuous-GrYlRd"
+                                                                      },
+                                                            "thresholds":  {
+                                                                               "mode":  "percentage",
+                                                                               "steps":  [
+                                                                                             {
+                                                                                                 "color":  "green",
+                                                                                                 "value":  0
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "#EAB839",
+                                                                                                 "value":  70
+                                                                                             },
+                                                                                             {
+                                                                                                 "color":  "red",
+                                                                                                 "value":  90
+                                                                                             }
+                                                                                         ]
+                                                                           },
+                                                            "unit":  "percent"
+                                                        }
+                                       },
+                       "gridPos":  {
+                                       "h":  8,
+                                       "w":  12,
+                                       "x":  12,
+                                       "y":  30
+                                   },
+                       "id":  7,
+                       "options":  {
+                                       "barShape":  "flat",
+                                       "barWidthFactor":  0.54,
+                                       "effects":  {
+                                                       "barGlow":  false,
+                                                       "centerGlow":  false,
+                                                       "gradient":  true
+                                                   },
+                                       "endpointMarker":  "point",
+                                       "minVizHeight":  75,
+                                       "minVizWidth":  75,
+                                       "orientation":  "auto",
+                                       "reduceOptions":  {
+                                                             "calcs":  [
+                                                                           "lastNotNull"
+                                                                       ],
+                                                             "fields":  "",
+                                                             "values":  false
+                                                         },
+                                       "segmentCount":  1,
+                                       "segmentSpacing":  0.3,
+                                       "shape":  "gauge",
+                                       "showThresholdLabels":  false,
+                                       "showThresholdMarkers":  true,
+                                       "sizing":  "auto",
+                                       "sparkline":  true,
+                                       "textMode":  "auto"
+                                   },
+                       "pluginVersion":  "13.2.1",
+                       "targets":  [
+                                       {
+                                           "datasource":  {
+                                                              "type":  "prometheus",
+                                                              "uid":  "prometheus"
+                                                          },
+                                           "editorMode":  "code",
+                                           "expr":  "100 *\r\nsum(\r\n  container_memory_working_set_bytes{\r\n    namespace=\"default\",\r\n    pod=~\"ironlatch-.*\",\r\n    container=\"ironlatch\"\r\n  }\r\n)\r\n/\r\nsum(\r\n  kube_pod_container_resource_limits{\r\n    namespace=\"default\",\r\n    pod=~\"ironlatch-.*\",\r\n    container=\"ironlatch\",\r\n    resource=\"memory\",\r\n    unit=\"byte\"\r\n  }\r\n)",
+                                           "legendFormat":  "__auto",
+                                           "range":  true,
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "title":  "IronLatch Memory Usage",
+                       "transparent":  true,
+                       "type":  "gauge"
+                   }
+               ],
+    "preload":  false,
+    "refresh":  "5s",
+    "schemaVersion":  42,
+    "templating":  {
+                       "list":  [
+                                    {
+                                        "auto":  false,
+                                        "auto_count":  30,
+                                        "auto_min":  "10s",
+                                        "current":  {
+                                                        "text":  "1m",
+                                                        "value":  "1m"
+                                                    },
+                                        "hide":  0,
+                                        "name":  "interval0",
+                                        "options":  [
+                                                        {
+                                                            "selected":  true,
+                                                            "text":  "1m",
+                                                            "value":  "1m"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "10m",
+                                                            "value":  "10m"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "30m",
+                                                            "value":  "30m"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "1h",
+                                                            "value":  "1h"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "6h",
+                                                            "value":  "6h"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "12h",
+                                                            "value":  "12h"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "1d",
+                                                            "value":  "1d"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "7d",
+                                                            "value":  "7d"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "14d",
+                                                            "value":  "14d"
+                                                        },
+                                                        {
+                                                            "selected":  false,
+                                                            "text":  "30d",
+                                                            "value":  "30d"
+                                                        }
+                                                    ],
+                                        "query":  "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+                                        "skipUrlSync":  false,
+                                        "type":  "interval"
+                                    }
+                                ]
+                   },
+    "time":  {
+                 "from":  "now-1h",
+                 "to":  "now"
+             },
+    "timepicker":  {
+                       "refresh_intervals":  [
+                                                 "5s",
+                                                 "10s",
+                                                 "30s",
+                                                 "1m",
+                                                 "5m",
+                                                 "15m",
+                                                 "30m",
+                                                 "1h",
+                                                 "2h",
+                                                 "1d"
+                                             ]
+                   },
+    "timezone":  "browser",
+    "title":  "IronLatch Operations Dashboard",
+    "uid":  "ad8scww",
+    "version":  19
+}

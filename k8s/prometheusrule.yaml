@@ -1,0 +1,60 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: ironlatch-alerts
+  labels:
+    release: monitoring
+spec:
+  groups:
+    - name: ironlatch.rules
+      rules:
+        - alert: IronLatchDown
+          expr: |
+            (up{
+              namespace="default",
+              service="ironlatch-service"
+            } == 0)
+            or
+            absent(
+              up{
+                namespace="default",
+                service="ironlatch-service"
+              }
+            )
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "IronLatch is down"
+            description: "Prometheus has been unable to scrape IronLatch for one minute."
+
+        - alert: IronLatchHighErrorRate
+          expr: |
+            (
+              100 *
+              sum(
+                rate(
+                  http_requests_total{
+                    service="ironlatch-service",
+                    status=~"4xx|5xx"
+                  }[5m]
+                )
+              )
+              /
+              clamp_min(
+                sum(
+                  rate(
+                    http_requests_total{
+                      service="ironlatch-service"
+                    }[5m]
+                  )
+                ),
+                0.001
+              )
+            ) > 5
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "IronLatch error rate is high"
+            description: "More than 5% of IronLatch requests have been errors for two minutes."

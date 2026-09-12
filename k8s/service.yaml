@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ironlatch-service
+  labels:
+    app: ironlatch
+spec:
+  selector:
+    app: ironlatch
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP
