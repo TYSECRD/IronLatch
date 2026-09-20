@@ -14,11 +14,7 @@ RUN pip install \
     --no-cache-dir \
     --disable-pip-version-check \
     -r requirements.txt \
-    && pip install \
-    --no-cache-dir \
-    --disable-pip-version-check \
-    "setuptools>=78.1.1" \
-    "msgpack>=1.2.1"
+    && pip uninstall -y pip setuptools
 
 COPY --chown=ironlatch:ironlatch app ./app
 
