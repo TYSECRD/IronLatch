@@ -13,7 +13,12 @@ COPY requirements.txt .
 RUN pip install \
     --no-cache-dir \
     --disable-pip-version-check \
-    -r requirements.txt
+    -r requirements.txt \
+    && pip install \
+    --no-cache-dir \
+    --disable-pip-version-check \
+    "setuptools>=78.1.1" \
+    "msgpack>=1.2.1"
 
 COPY --chown=ironlatch:ironlatch app ./app
 
